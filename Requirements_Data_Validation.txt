@@ -1,0 +1,14 @@
+Python data validation script 
+Aim:
+To Validate data between 2 excel files 
+Library and tools used:
+1.Python
+2.Pandas
+3.UnitTest
+Steps and procedure:
+1.Read the 2 excel files as a pandas dataframe
+2.Create a context file that has the column mappings (Source_column:Target_column)
+3.Validate the records for the mapping columns
+
+
+

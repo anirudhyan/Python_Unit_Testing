@@ -1,0 +1,9 @@
+Source:Target
+emp_id:Employee_id
+ename:Employee_Name
+esal:Employee_Salary
+edesg:Employee_designation
+ephone_no:Employee_phone_number
+e_mail_id:Employee_email_id
+elocation:Employee_location
+
