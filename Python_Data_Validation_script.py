@@ -14,6 +14,8 @@ import pandas as pd
 mapping_file_path = "Mapping_Sheet.txt"
 src_file_path = "Source_Data_employee.xlsx"
 tar_file_path = "Target_Data_employee.xlsx"
+src_pk_key_column = "emp_id"
+tar_pk_key_column = "Employee_id"
 
 with open(mapping_file_path,'r') as map_file:
     global mapping_dict 
@@ -51,6 +53,26 @@ if src_record_count == tar_record_count:
 else:
     print("Source record count:{}  Target record count: {} The counts are not  equal ".format(src_record_count,tar_record_count))
 
+print("Starting data validation :")
+
+src_df = src_df.sort_values(by=[src_pk_key_column])
+tar_df = tar_df.sort_values(by=[tar_pk_key_column])
+
+src_pk_list = list(src_df[src_pk_key_column])
+tar_pk_list = list(tar_df[tar_pk_key_column])
+
+for i in src_pk_list:
+    if i in tar_pk_list:
+        for j in mapping_dict.keys():
+            a = list(src_df[src_df[src_pk_key_column]==i][j])[0]
+            b = list(tar_df[tar_df[tar_pk_key_column]==i][mapping_dict[j]])[0]
+            if (a != b):
+                print("id: {} source_column:{} source_value :{} target_column: {} target_value :{} Values are mismatching".format(i,j,a,mapping_dict[j],b))
+
     
+            
+    
+
+
             
     
